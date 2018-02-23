@@ -1,0 +1,37 @@
+use DB01TEST01
+create table stude1(id int identity(5000,1),name varchar(30),contact bigint,city varchar(10))
+select * from stude1
+
+create procedure
+sp_regist_student_57
+@id int out, @name varchar(30),@contact bigint,@city varchar(10)
+as
+begin
+insert into stude1 values(@name,@contact,@city)
+set @id=@@IDENTITY
+end 
+
+
+create procedure
+sp_view_student_57
+as
+begin
+select * from stude1
+end
+
+create procedure
+sp_delete_student_57
+@id int
+as
+begin
+delete from stude1 where id=@id
+end
+create procedure
+sp_update_student_57
+@id int,@name varchar(30),@contact bigint,@city varchar(10)
+as 
+begin
+update stude1
+set name=@name,contact=@contact,city=@city where id=@id
+end
+
